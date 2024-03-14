@@ -33,9 +33,13 @@ const ProjectList = () => {
     setActiveProjects(p);
   };
 
+  const handleAddNewProject = (newProject) => {
+    setProjects((projects) => ([newProject, ...projects]));
+
+  }
   return (
     <div className="w-full p-2 md:!px-8">
-      <Create onChangeSearch={handleSearch} />
+      <Create onChangeSearch={handleSearch} onCreateNewProject={handleAddNewProject} />
       <div className="py-3">
         {activeProjects.map((hit) => {
           return (
@@ -92,7 +96,7 @@ const Budget = ({ project }) => {
   return <ProgressBar percentage={width} max={budget_max_monthly} value={total} />;
 };
 
-const Create = ({ onChangeSearch }) => {
+const Create = ({ onChangeSearch, onCreateNewProject }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -138,19 +142,21 @@ const Create = ({ onChangeSearch }) => {
             }}>
             {/* Modal Body */}
             <Formik
-              initialValues={{}}
+              initialValues={{ name: '', status: '' }}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
                   values.status = "active";
                   const res = await api.post("/project", values);
                   if (!res.ok) throw res;
                   toast.success("Created!");
+                  onCreateNewProject(res.data)
+                  setSubmitting(false);
                   setOpen(false);
                 } catch (e) {
                   console.log(e);
                   toast.error("Some Error!", e.code);
+                  setSubmitting(false)
                 }
-                setSubmitting(false);
               }}>
               {({ values, handleChange, handleSubmit, isSubmitting }) => (
                 <React.Fragment>
