@@ -155,6 +155,7 @@ const Create = ({ onChangeSearch, onCreateNewProject }) => {
                 } catch (e) {
                   console.log(e);
                   toast.error("Some Error!", e.code);
+                  setSubmitting(false)
                 }
               }}>
               {({ values, handleChange, handleSubmit, isSubmitting }) => (
