@@ -17,22 +17,17 @@ ChartJS.register(...registerables);
 
 export default function ProjectView() {
   const [project, setProject] = useState(null);
-  const [copied, setCopied] = React.useState(false);
   const { id } = useParams();
   const history = useHistory();
 
   useEffect(() => {
     (async () => {
-      const { data: u } = await api.get(`/project/${id}`);
-      setProject(u);
+      const { data } = await api.get(`/project/${id}`);
+      setProject(data[0]);
     })();
   }, []);
 
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => setCopied(false), 3000);
-    }
-  }, [copied]);
+
 
   if (!project) return <Loader />;
 
@@ -60,7 +55,7 @@ export default function ProjectView() {
 }
 
 const ProjectDetails = ({ project }) => {
-  console.log(project);
+
   return (
     <div>
       <div className="flex flex-wrap p-3">
