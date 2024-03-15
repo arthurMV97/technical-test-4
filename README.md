@@ -46,7 +46,7 @@ Send us the project and answer to those simple questions :
 
 ### What bugs did you find ? How did you solve these and why ? 
 
-1. The user name created via the form is not saved in the database: this is afront-end bug that is caused by a difference between the key sent and the key espected by the back-end
+1. The user name created via the form is not saved in the database: this is a front-end bug that is caused by a difference between the key sent and the key espected by the back-end
 2. The user informations can't be updated. We have to change the event "onChange" by "onClick" on the Update button.
 3. After the creation of a project, we don't see it on the list and we have to refresh the page to see it. We have to push the new project to the list of displayed projects
 4. BONUS: Change the scrollbar color to default because it doesn't fit with the global UI.
