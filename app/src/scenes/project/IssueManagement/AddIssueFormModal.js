@@ -58,7 +58,7 @@ const AddIssueFormModal = ({ isOpen, onCloseModal, projectId, addNewIssue }) => 
                                 </div>
                                 <div className="mb-2 py-2">
                                     <div className="text-[14px] text-[#212325] font-medium ">Type</div>
-                                    <select defaultValue="" className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="type" value={values.type} onChange={handleChange}>
+                                    <select className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="type" value={values.type} onChange={handleChange}>
                                         <option disabled value="">Select the type of the issue</option>
                                         <option value="FEATURE">Feature</option>
                                         <option value="BUG">Bug</option>
@@ -66,7 +66,7 @@ const AddIssueFormModal = ({ isOpen, onCloseModal, projectId, addNewIssue }) => 
                                 </div>
                                 <div className="py-2">
                                     <div className="text-[14px] text-[#212325] font-medium	">Assign to:</div>
-                                    <select defaultValue="" className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="assigneeId" value={values.assigneeId} onChange={handleChange}>
+                                    <select className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="assigneeId" value={values.assigneeId} onChange={handleChange}>
                                         <option disabled value="">Select a user to work on this issue</option>
                                         {users.map((user) => <option key={user._id} value={user._id}>{user.name}</option>
                                         )}

@@ -14,7 +14,7 @@ const Board = ({ title, issues, removeIssue, updateStatus }) => {
         <h2 className="text-[22px] font-semibold ml-2 mt-4 mb-1">{title}</h2>
 
         <div className="bg-white mb-[10px] rounded-lg  flex gap-4 p-3 justify-around">
-            {issues ? ISSUES_COLUMNS.map((element, index) => <Column key={index} title={element.title} issues={filteredByTypeIssues(issues, element.status)} removeIssue={removeIssue} updateStatus={updateStatus} />) : ''}
+            {issues && ISSUES_COLUMNS.map((element, index) => <Column key={index} title={element.title} issues={filteredByTypeIssues(issues, element.status)} removeIssue={removeIssue} updateStatus={updateStatus} />)}
         </div>
 
     </>)

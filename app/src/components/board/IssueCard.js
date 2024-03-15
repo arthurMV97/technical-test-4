@@ -3,7 +3,7 @@ import DeleteCross from "../../assets/DeleteCross";
 
 const IssueCard = ({ issueInfos, removeIssue, updateStatus }) => {
     return (
-        <div className={`bg-white border rounded-md p-3  my-2 ${updateStatus && "cursor-pointer"}`} onClick={() => updateStatus?.(issueInfos._id)}>
+        <div className={`bg-white border rounded-md p-3  my-2 ${updateStatus ? "cursor-pointer" : ""}`} onClick={() => updateStatus?.(issueInfos._id)}>
             <div className="flex flex-flow justify-between">
                 <p className="font-semibold">{issueInfos?.title}</p>
                 {removeIssue && <button className="bg-white  pr-1" onClick={() => { removeIssue(issueInfos._id) }}><DeleteCross /></button>}
