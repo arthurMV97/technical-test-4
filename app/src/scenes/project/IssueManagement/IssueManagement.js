@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Board from "../../../components/board/board";
-import { COLUMNS } from "../../../constants";
 import AddIssueFormModal from "./AddIssueFormModal";
 import api from "../../../services/api";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
