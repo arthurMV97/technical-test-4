@@ -10,7 +10,6 @@ const AddIssueFormModal = ({ isOpen, onCloseModal, projectId, addNewIssue }) => 
     useEffect(() => {
         (async () => {
             const { data } = await api.get("/user");
-            console.log('data', data);
             setUsers(data);
         })();
     }, [isOpen])
@@ -28,7 +27,7 @@ const AddIssueFormModal = ({ isOpen, onCloseModal, projectId, addNewIssue }) => 
                 <h3 className="text-[22px] font-semibold ml-2 mt-4 mb-1">Add new issue</h3>
 
                 <Formik
-                    initialValues={{}}
+                    initialValues={{ title: "", description: "", assigneeId: "", type: "" }}
                     onSubmit={async ({ type, assigneeId, title, description, }, { setSubmitting }) => {
                         try {
                             const params = { type, title, description, assigneeId, assigneeName: users.find(user => user._id === assigneeId).name, projectId }
@@ -49,26 +48,27 @@ const AddIssueFormModal = ({ isOpen, onCloseModal, projectId, addNewIssue }) => 
                     {({ values, handleChange, handleSubmit, isSubmitting }) => (
                         <React.Fragment>
                             <div className="w-full  text-left content-baseline">
-                                <div>
+                                <div className="py-2">
                                     <div className="text-[14px] text-[#212325] font-medium	">Title</div>
                                     <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="title" value={values.title} onChange={handleChange} />
                                 </div>
-                                <div>
+                                <div className="py-2">
                                     <div className="text-[14px] text-[#212325] font-medium	">Description</div>
-                                    <textarea rows="5" cols="33" className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="description" value={values.description} onChange={handleChange} />
+                                    <textarea className=" h-20 projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="description" value={values.description} onChange={handleChange} />
                                 </div>
-                                <div className="mb-2">
+                                <div className="mb-2 py-2">
                                     <div className="text-[14px] text-[#212325] font-medium ">Type</div>
-                                    <select className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="type" value={values.type} onChange={handleChange}>
+                                    <select defaultValue="" className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="type" value={values.type} onChange={handleChange}>
+                                        <option disabled value="">Select the type of the issue</option>
                                         <option value="FEATURE">Feature</option>
                                         <option value="BUG">Bug</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div className="py-2">
                                     <div className="text-[14px] text-[#212325] font-medium	">Assign to:</div>
-                                    <select className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="assigneeId" value={values.assigneeId} onChange={handleChange}>
-                                        <option value=""></option>
-                                        {users.map((user) => <option value={user._id}>{user.name}</option>
+                                    <select defaultValue="" className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="assigneeId" value={values.assigneeId} onChange={handleChange}>
+                                        <option disabled value="">Select a user to work on this issue</option>
+                                        {users.map((user) => <option key={user._id} value={user._id}>{user.name}</option>
                                         )}
                                     </select>
                                 </div>

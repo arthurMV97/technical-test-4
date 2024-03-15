@@ -24,7 +24,6 @@ const StatusFormModal = ({ isOpen, onCloseModal, id, onStatusUpdated }) => {
                     initialValues={{}}
                     onSubmit={async ({ status }, { setSubmitting }) => {
                         try {
-                            console.log('status', status);
                             const res = await api.put(`/issue/${id}`, { status });
                             if (!res.ok) throw res;
                             onStatusUpdated()

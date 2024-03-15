@@ -23,7 +23,6 @@ const IssuesManagement = () => {
     }, [])
 
     const removeIssue = async (id) => {
-        console.log('sentence', id);
         const confirm = window.confirm("Are you sure ?");
         if (!confirm) return;
         try {

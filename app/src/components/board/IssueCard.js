@@ -2,7 +2,6 @@ import React from "react";
 import DeleteCross from "../../assets/DeleteCross";
 
 const IssueCard = ({ issueInfos, index, removeIssue, updateStatus }) => {
-    console.log('sentence', issueInfos);
     return (
         <div className={`bg-white border rounded-md p-3  my-2 ${updateStatus && "cursor-pointer"}`} onClick={() => updateStatus(issueInfos._id)}>
             <div className="flex flex-flow justify-between">
