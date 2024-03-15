@@ -8,7 +8,7 @@ const IssueCard = ({ issueInfos, index, removeIssue, updateStatus }) => {
                 <p className="font-semibold">{issueInfos?.title}</p>
                 {removeIssue && <button className="bg-white  pr-1" onClick={() => { removeIssue(issueInfos._id) }}><DeleteCross /></button>}
             </div>
-            <p>{issueInfos?.description}</p>
+            <p className="text-s w-30 break-words leading-4	">{issueInfos?.description}</p>
             <div className="flex flex-flow justify-between">
                 <p className="text-xs mt-2">Reporter: {issueInfos.reporter}</p>
                 <p className="text-xs mt-2">Assignee: {issueInfos.assigneeName}</p>
