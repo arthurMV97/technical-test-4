@@ -66,7 +66,7 @@ We will have informations on everything that is done for the project and the thi
 2. Front-end: Big files. It is better to split componants by files instead of having multiple componants on the same file. Exemple project/list.js
 3. Comments in the code: If their is comments to explain the code, the code is not well written. Have better naming for variables will help.
 4. Some business logic are spread in the wrong files/componants. In the Create componant we have the creation logic & search logic. The search logic should be on another componant named Seach for example.
-5. Magic numbers: Some numbers are used and we don't have the context for them. For example the nummber 8 is used to implicitely refear to a day. It will be more understandable to store it in a constant named `NUMBER_OF_HOURS_IN_A_DAY`.
+5. Magic numbers: Some numbers are used and we don't have the context for them. For example the number 8 is used to implicitely refear to a day. It will be more understandable to store it in a constant named `NUMBER_OF_HOURS_IN_A_DAY`.
 6. Some business logic is calculated in the front-end app and should be calculated in the back-end. For example the cost per day for the activities.
 7. The Developer experience is very poor: Bad linting, poor prettier config. We should have more errors shown like import errors, we should use typescript or at least use Proptypes in the front end. Some bugs like th no. 2 listed can't exist if we had typescript. 
 8. Use jsx files instead of js files to separate pure js and react. The best is .ts & .tsx !
