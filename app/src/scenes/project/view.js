@@ -1,8 +1,6 @@
 import { Chart as ChartJS, registerables } from "chart.js";
 import React, { useEffect, useState } from "react";
-import { IoIosAt, IoIosLink, IoIosStats, IoLogoGithub } from "react-icons/io";
-import { RiRoadMapLine } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { IoIosAt, IoIosLink } from "react-icons/io";
 import { useHistory, useParams } from "react-router-dom";
 
 import { getDaysInMonth } from "./utils";
@@ -12,6 +10,7 @@ import api from "../../services/api";
 
 import ProgressBar from "../../components/ProgressBar";
 import SelectMonth from "./../../components/selectMonth";
+import IssuesManagement from "./IssueManagement/IssueManagement";
 
 ChartJS.register(...registerables);
 
@@ -90,6 +89,9 @@ const ProjectDetails = ({ project }) => {
       </div>
       <div className="flex flex-wrap p-3 gap-4"></div>
       <Activities project={project} />
+      <div className="flex flex-wrap p-3 gap-4"></div>
+      <IssuesManagement />
+
     </div>
   );
 };
@@ -284,3 +286,5 @@ const Links = ({ project }) => {
     </div>
   );
 };
+
+

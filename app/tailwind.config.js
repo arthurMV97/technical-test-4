@@ -63,6 +63,7 @@ module.exports = {
       minHeight: {
         100: "100px",
         130: "130px",
+        150: "150px"
       },
     },
   },
