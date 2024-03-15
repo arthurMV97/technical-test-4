@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
+import Board from "../../components/board/board";
+import { COLUMNS } from "../../constants";
+import StatusFormModal from "./StatusFormModal";
 
 const Home = () => {
   const [availableUsers, setAvailableUsers] = useState();
+  const [issues, setIssues] = useState([]);
+  const [isOpen, setOpen] = useState(false)
+  const [issueId, setIssueId] = useState()
 
+
+  const fetchIssues = async () => {
+    const { data } = await api.get(`/issue/my-issues`);
+    setIssues(data)
+  }
   async function getUser() {
     const { data } = await api.get("/user/available");
     setAvailableUsers(data);
@@ -12,6 +23,17 @@ const Home = () => {
     getUser();
   }, []);
 
+  useEffect(() => {
+    fetchIssues()
+  }, [])
+
+
+
+  const handleUpdateIssue = () => {
+    setIssueId(undefined)
+    fetchIssues()
+
+  }
   return (
     <div className="px-2 md:!px-8 flex flex-col md:flex-row gap-5 mt-5">
       <div className="flex-1 mb-[10px]">
@@ -28,6 +50,11 @@ const Home = () => {
           </div>
         ))}
         {availableUsers?.length === 0 ? <span className="italic text-gray-600">No available users.</span> : null}
+        <Board issues={issues} title="My Issues" updateStatus={(id) => {
+          setIssueId(id);
+          setOpen(true)
+        }} />
+        <StatusFormModal id={issueId} isOpen={isOpen} onCloseModal={() => setOpen(false)} onStatusUpdated={handleUpdateIssue} />
       </div>
     </div>
   );
